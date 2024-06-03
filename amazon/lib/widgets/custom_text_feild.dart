@@ -2,13 +2,12 @@ import 'package:amazon/utils/exports.dart';
 
 class CustomTextFeild extends StatelessWidget {
   final String text;
-  final VoidCallback onTap;
   final TextEditingController controller;
-  const CustomTextFeild(
-      {required this.controller,
-      required this.text,
-      super.key,
-      required this.onTap});
+  const CustomTextFeild({
+    required this.controller,
+    required this.text,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

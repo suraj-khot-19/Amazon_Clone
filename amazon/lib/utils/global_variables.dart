@@ -1,5 +1,7 @@
 import 'package:amazon/utils/exports.dart';
 
+String uri = 'http://<IP Address>:3000';
+
 class GloabalVariables {
   // COLORS
   static const appBarGradient = LinearGradient(

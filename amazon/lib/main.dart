@@ -1,7 +1,13 @@
 import 'package:amazon/utils/exports.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+      //register provider
+      MultiProvider(providers: [
+    ChangeNotifierProvider(
+      create: (_) => UserProider(),
+    ),
+  ], child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
