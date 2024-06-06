@@ -3,6 +3,7 @@ const bcryptjs = require("bcryptjs");
 const User = require("../models/user_model");
 const authRouter = express.Router();
 const jwt = require("jsonwebtoken");
+const authMiddelware = require("../middlewares/auth_middleware");
 
 //sign up
 authRouter.post("/api/signup", async (req, res) => {
@@ -54,6 +55,37 @@ authRouter.post('/api/signin', async (req, res) => {
     } catch (e) {
         res.status(500).json({ error: e.message });
     }
+});
+
+//verify token api
+authRouter.post("/tokenIsValid", async (req, res) => {
+    try {
+        //checking user with null token
+        const token = req.header('auth-token');
+        if (!token)
+            return res.json(false);
+
+        //if there verify with secretOrPublicKey: jwt.Secret
+        const isVerified = jwt.verify(token, "passwordKey");
+        //if unverified
+        if (!isVerified) return res.json(false);
+
+        //cheking user exist with verified id
+        const existUser = await User.findById(isVerified.id);
+        if (!existUser) return res.json(false);
+       
+        //if non of above condition
+        res.json(true);
+    } catch (e) {
+        res.status(500).json({ error: e.message });
+    }
+});
+// geting data of user
+// passing middelware authMiddelware
+
+authRouter.get('/', authMiddelware, async (req, res) => {
+    const user = await User.findById(req.user);
+    res.json({ ...user._doc, token: req.token });
 });
 //export
 module.exports = authRouter;

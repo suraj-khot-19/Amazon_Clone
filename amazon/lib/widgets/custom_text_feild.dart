@@ -2,8 +2,10 @@ import 'package:amazon/utils/exports.dart';
 
 class CustomTextFeild extends StatelessWidget {
   final String text;
+  final int maxLines;
   final TextEditingController controller;
   const CustomTextFeild({
+    this.maxLines = 1,
     required this.controller,
     required this.text,
     super.key,
@@ -15,14 +17,13 @@ class CustomTextFeild extends StatelessWidget {
       controller: controller,
       decoration: InputDecoration(
           hintText: text,
-          labelText: text,
           border: const OutlineInputBorder(
-            gapPadding: 20,
             borderSide: BorderSide(color: Colors.black38),
           ),
           enabledBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.black38),
           )),
+      maxLines: maxLines,
       validator: (value) {
         if (value == null || value.isEmpty) {
           return "$text is required";

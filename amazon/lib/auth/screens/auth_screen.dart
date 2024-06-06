@@ -51,7 +51,7 @@ class _AuthScreenState extends State<AuthScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: GloabalVariables.greyBackgroundColor,
+      backgroundColor: AppStyles.greyBackgroundColor,
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: SafeArea(
@@ -64,14 +64,14 @@ class _AuthScreenState extends State<AuthScreen> {
               ),
               ListTile(
                 tileColor: _auth == Auth.singUp
-                    ? GloabalVariables.backgroundColor
-                    : GloabalVariables.greyBackgroundColor,
+                    ? AppStyles.backgroundColor
+                    : AppStyles.greyBackgroundColor,
                 title: const Text(
                   "Create Account",
                   style: TextStyle(fontWeight: FontWeight.w600),
                 ),
                 leading: Radio(
-                    activeColor: GloabalVariables.secondaryColor,
+                    activeColor: AppStyles.secondaryColor,
                     value: Auth.singUp,
                     groupValue: _auth,
                     onChanged: (Auth? val) {
@@ -85,7 +85,7 @@ class _AuthScreenState extends State<AuthScreen> {
                     key: _signUpFormKey,
                     child: Container(
                       padding: const EdgeInsets.all(8),
-                      color: GloabalVariables.backgroundColor,
+                      color: AppStyles.backgroundColor,
                       child: Column(
                         children: [
                           CustomTextFeild(
@@ -116,14 +116,14 @@ class _AuthScreenState extends State<AuthScreen> {
                     )),
               ListTile(
                 tileColor: _auth == Auth.signIn
-                    ? GloabalVariables.backgroundColor
-                    : GloabalVariables.greyBackgroundColor,
+                    ? AppStyles.backgroundColor
+                    : AppStyles.greyBackgroundColor,
                 title: const Text(
                   "Login",
                   style: TextStyle(fontWeight: FontWeight.w600),
                 ),
                 leading: Radio(
-                    activeColor: GloabalVariables.secondaryColor,
+                    activeColor: AppStyles.secondaryColor,
                     value: Auth.signIn,
                     groupValue: _auth,
                     onChanged: (Auth? val) {

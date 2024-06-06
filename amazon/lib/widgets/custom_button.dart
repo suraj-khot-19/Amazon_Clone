@@ -11,7 +11,7 @@ class CustomButton extends StatelessWidget {
       width: double.infinity,
       height: 50,
       decoration: BoxDecoration(
-        color: GloabalVariables.secondaryColor,
+        color: AppStyles.secondaryColor,
         borderRadius: BorderRadius.circular(4),
       ),
       child: InkWell(

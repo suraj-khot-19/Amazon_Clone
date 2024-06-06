@@ -37,11 +37,22 @@ dependencies:
   cupertino_icons: ^1.0.6
   http: ^1.2.1
   provider: ^6.0.2
+  carousel_slider: ^4.2.1
   shared_preferences: ^2.2.3
+  dotted_border: ^2.1.0
+  file_picker: ^8.0.3
+ 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+    
+  flutter_launcher_icons: ^0.13.1
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/logo.png"
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -62,8 +73,10 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - assets/images/
+    - assets/images/categories/
+    - assets/images/slide_images/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

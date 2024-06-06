@@ -14,6 +14,18 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
         settings: routeSettings,
         builder: (_) => const MyHomeScreen(),
       );
+    //BottomNavigation()
+    case BottomNavigation.routeName:
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => const BottomNavigation(),
+      );
+    //adminAddProduct
+    case AdminAddProduct.routeName:
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => const AdminAddProduct(),
+      );
     default:
       return MaterialPageRoute(
         builder: (_) => const Scaffold(
