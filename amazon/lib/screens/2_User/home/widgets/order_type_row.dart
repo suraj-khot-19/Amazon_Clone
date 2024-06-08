@@ -1,8 +1,12 @@
 import 'package:amazon/utils/exports.dart';
-import 'package:flutter/cupertino.dart';
 
 class OrderTypeRow extends StatelessWidget {
   const OrderTypeRow({super.key});
+
+  void returnCategoryPage(BuildContext context, String categoryName) {
+    Navigator.pushNamed(context, SpecificCategory.routeName,
+        arguments: categoryName);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,26 +63,29 @@ class OrderTypeRow extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemCount: imgList.length,
         itemBuilder: (context, index) {
-          return Column(
-            children: [
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Image.asset(
-                    imgList[index]['images']!,
-                    fit: BoxFit.fitHeight,
-                    height: 50,
-                    width: 50,
+          return GestureDetector(
+            onTap: () => returnCategoryPage(context, imgList[index]['type']!),
+            child: Column(
+              children: [
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.asset(
+                      imgList[index]['images']!,
+                      fit: BoxFit.fitHeight,
+                      height: 50,
+                      width: 50,
+                    ),
                   ),
                 ),
-              ),
-              Text(
-                imgList[index]['type']!,
-                style:
-                    const TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
-              ),
-            ],
+                Text(
+                  imgList[index]['type']!,
+                  style: const TextStyle(
+                      fontSize: 12, fontWeight: FontWeight.w400),
+                ),
+              ],
+            ),
           );
         },
       ),

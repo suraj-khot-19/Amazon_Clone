@@ -92,17 +92,23 @@ class _AuthScreenState extends State<AuthScreen> {
                             text: "name",
                             controller: _nameController,
                           ),
-                          addVerticleSpace(10),
+                          CustomSpacer(
+                            height: 10,
+                          ),
                           CustomTextFeild(
                             text: "email",
                             controller: _emailController,
                           ),
-                          addVerticleSpace(10),
+                          CustomSpacer(
+                            height: 10,
+                          ),
                           CustomTextFeild(
                             text: "password",
                             controller: _passwordController,
                           ),
-                          addVerticleSpace(10),
+                          CustomSpacer(
+                            height: 10,
+                          ),
                           CustomButton(
                               text: "Create account",
                               onTap: () {
@@ -110,7 +116,9 @@ class _AuthScreenState extends State<AuthScreen> {
                                   userSignUp();
                                 }
                               }),
-                          addVerticleSpace(2),
+                          CustomSpacer(
+                            height: 2,
+                          ),
                         ],
                       ),
                     )),
@@ -144,12 +152,16 @@ class _AuthScreenState extends State<AuthScreen> {
                             text: "email",
                             controller: _emailController,
                           ),
-                          addVerticleSpace(10),
+                          CustomSpacer(
+                            height: 10,
+                          ),
                           CustomTextFeild(
                             text: "password",
                             controller: _passwordController,
                           ),
-                          addVerticleSpace(10),
+                          CustomSpacer(
+                            height: 10,
+                          ),
                           CustomButton(
                               text: "Sign In",
                               onTap: () {
@@ -157,7 +169,9 @@ class _AuthScreenState extends State<AuthScreen> {
                                   userSignIn();
                                 }
                               }),
-                          addVerticleSpace(2),
+                          CustomSpacer(
+                            height: 2,
+                          ),
                         ],
                       ),
                     ))

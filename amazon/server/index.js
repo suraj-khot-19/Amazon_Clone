@@ -5,7 +5,8 @@ const mongoose=require("mongoose");
 
 //imports from other files
 const authRouter=require("./routers/auth");
-
+const adminRoute = require("./routers/admin");
+const categoryProductRoute=require("./routers/categort_product");
 
 //initalization
 const PORT=3000;
@@ -14,6 +15,8 @@ const db ="mongodb+srv://suraj:suraj123@flutteramazoncloneapp.zspb2e1.mongodb.ne
 //middleware
 app.use(express.json());
 app.use(authRouter);
+app.use(adminRoute);
+app.use(categoryProductRoute);
 
 //connection
 mongoose.connect(db).then(()=>{

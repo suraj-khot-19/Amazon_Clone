@@ -3,8 +3,10 @@ import 'package:amazon/utils/exports.dart';
 class CustomTextFeild extends StatelessWidget {
   final String text;
   final int maxLines;
+  final TextInputType type;
   final TextEditingController controller;
   const CustomTextFeild({
+    this.type = TextInputType.text,
     this.maxLines = 1,
     required this.controller,
     required this.text,
@@ -15,6 +17,7 @@ class CustomTextFeild extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
+      keyboardType: type,
       decoration: InputDecoration(
           hintText: text,
           border: const OutlineInputBorder(

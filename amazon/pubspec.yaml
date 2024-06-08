@@ -41,6 +41,7 @@ dependencies:
   shared_preferences: ^2.2.3
   dotted_border: ^2.1.0
   file_picker: ^8.0.3
+  cloudinary_public: ^0.23.1
  
 
 dev_dependencies:

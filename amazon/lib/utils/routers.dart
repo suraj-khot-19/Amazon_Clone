@@ -26,6 +26,16 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
         settings: routeSettings,
         builder: (_) => const AdminAddProduct(),
       );
+    //specific category
+    case SpecificCategory.routeName:
+      var categoryArgument = routeSettings.arguments as String;
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => SpecificCategory(
+          Category: categoryArgument,
+        ),
+      );
+
     default:
       return MaterialPageRoute(
         builder: (_) => const Scaffold(
