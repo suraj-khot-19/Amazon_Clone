@@ -34,3 +34,31 @@
 </table>
 <br><br>
 
+
+
+
+
+<b color="red">Api Testing Output's</b>
+<br><br><br>
+<table>
+  <tr><b>1.Email and Password Validation</b></tr>
+  <br><br>
+  <tr>
+    <td><img src="https://github.com/suraj-khot-19/img/blob/main/amazon1.png" alt="vid"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/suraj-khot-19/img/blob/main/amazon2.png" alt="vid"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/suraj-khot-19/img/blob/main/amazon3.png" alt="vid"></td>
+  </tr>
+    <td><img src="https://github.com/suraj-khot-19/img/blob/main/amazon5.png" alt="vid"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/suraj-khot-19/img/blob/main/amazon6.png" alt="vid"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/suraj-khot-19/img/blob/main/amazon7.png" alt="vid"></td>
+  </tr>
+</table>
+<br><br>
