@@ -70,6 +70,9 @@ class _AdminHomeState extends State<AdminHome> {
                   itemCount: products!.length,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
+                    childAspectRatio: 0.9,
+                    mainAxisSpacing: 5,
+                    crossAxisSpacing: 5,
                   ),
                   itemBuilder: (context, index) {
                     final productData = products![index];
@@ -81,21 +84,26 @@ class _AdminHomeState extends State<AdminHome> {
                             img: productData.images[0],
                           ),
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Expanded(
-                              child: Text(
-                                productData.name,
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 2,
+                        Expanded(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  productData.name,
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 2,
+                                ),
                               ),
-                            ),
-                            InkWell(
-                              onTap: () => deleteProduct(productData, index),
-                              child: Icon(Icons.delete_outline),
-                            ),
-                          ],
+                              InkWell(
+                                onTap: () => deleteProduct(productData, index),
+                                child: Icon(
+                                  Icons.delete_forever_rounded,
+                                  color: Colors.red,
+                                ),
+                              ),
+                            ],
+                          ),
                         )
                       ],
                     );

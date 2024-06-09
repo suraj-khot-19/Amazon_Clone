@@ -4,11 +4,14 @@ class CustomButton extends StatelessWidget {
   final String text;
   final VoidCallback onTap;
   final bool isLoading;
-  const CustomButton(
-      {this.isLoading = false,
-      super.key,
-      required this.text,
-      required this.onTap});
+  final bool color;
+  const CustomButton({
+    this.isLoading = false,
+    super.key,
+    required this.text,
+    required this.onTap,
+    this.color = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,20 +19,22 @@ class CustomButton extends StatelessWidget {
       width: double.infinity,
       height: 50,
       decoration: BoxDecoration(
-        color: AppStyles.secondaryColor,
+        color: color ? Colors.amberAccent : AppStyles.secondaryColor,
         borderRadius: BorderRadius.circular(4),
       ),
       child: InkWell(
         onTap: () => onTap(),
         child: Center(
-            child: isLoading
-                ? CircularProgressIndicator(
-                    valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                  )
-                : Text(
-                    text,
-                    style: const TextStyle(color: Colors.white, fontSize: 20),
-                  )),
+          child: isLoading
+              ? CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                )
+              : Text(
+                  text,
+                  style: TextStyle(
+                      color: color ? Colors.black : Colors.white, fontSize: 20),
+                ),
+        ),
       ),
     );
   }

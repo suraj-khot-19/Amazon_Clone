@@ -35,7 +35,24 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
           Category: categoryArgument,
         ),
       );
-
+    //SearchScreen
+    case SearchScreen.routeName:
+      var searchQuery = routeSettings.arguments as String;
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => SearchScreen(
+          search: searchQuery,
+        ),
+      );
+    //SearchScreen
+    case ProductDescription.routeName:
+      var product = routeSettings.arguments as Product;
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => ProductDescription(
+          product: product,
+        ),
+      );
     default:
       return MaterialPageRoute(
         builder: (_) => const Scaffold(

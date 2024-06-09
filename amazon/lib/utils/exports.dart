@@ -41,6 +41,12 @@ export 'package:amazon/models/product.dart';
 export 'package:amazon/widgets/custom_progrss_indicator.dart';
 export 'package:amazon/screens/2_User/home/screens/specific_category_screen.dart';
 export 'package:amazon/screens/2_User/home/services/product_category.dart';
+export 'package:amazon/screens/2_User/search/screens/search_screen.dart';
+export 'package:amazon/screens/2_User/search/services/search_services.dart';
+export 'package:amazon/screens/2_User/search/widget/list_product.dart';
+export 'package:amazon/screens/2_User/product_description/product_description.dart';
+// export
+// export
 // export
 // export
 // export

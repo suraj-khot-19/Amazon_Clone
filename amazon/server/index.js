@@ -7,6 +7,7 @@ const mongoose=require("mongoose");
 const authRouter=require("./routers/auth");
 const adminRoute = require("./routers/admin");
 const categoryProductRoute=require("./routers/categort_product");
+const searchScreenRouter = require("./routers/search");
 
 //initalization
 const PORT=3000;
@@ -17,6 +18,8 @@ app.use(express.json());
 app.use(authRouter);
 app.use(adminRoute);
 app.use(categoryProductRoute);
+
+app.use(searchScreenRouter);
 
 //connection
 mongoose.connect(db).then(()=>{

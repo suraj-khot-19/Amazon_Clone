@@ -84,39 +84,45 @@ class _SpecificCategoryState extends State<SpecificCategory> {
                       itemBuilder: (context, index) {
                         //initalizing product
                         final product = productList![index];
-                        return Column(
-                          children: [
-                            SizedBox(
-                              height: 130,
-                              child: DecoratedBox(
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: Colors.black12,
-                                    width: 0.5,
+                        //navigate to product description page fpr each product.
+                        return GestureDetector(
+                          onTap: () => Navigator.pushNamed(
+                              context, ProductDescription.routeName,
+                              arguments: product),
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: 130,
+                                child: DecoratedBox(
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: Colors.black12,
+                                      width: 0.5,
+                                    ),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsets.all(10),
+                                    child: Image.network(
+                                      product.images[0],
+                                    ),
                                   ),
                                 ),
-                                child: Padding(
-                                  padding: EdgeInsets.all(10),
-                                  child: Image.network(
-                                    product.images[0],
-                                  ),
+                              ),
+                              Container(
+                                alignment: Alignment.topLeft,
+                                padding: EdgeInsets.only(
+                                  left: 0,
+                                  top: 5,
+                                  right: 15,
+                                ),
+                                child: Text(
+                                  product.name,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
                                 ),
                               ),
-                            ),
-                            Container(
-                              alignment: Alignment.topLeft,
-                              padding: EdgeInsets.only(
-                                left: 0,
-                                top: 5,
-                                right: 15,
-                              ),
-                              child: Text(
-                                product.name,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            )
-                          ],
+                            ],
+                          ),
                         );
                       },
                     ),
