@@ -1,4 +1,24 @@
 <p>Amazon Clone App With Admin and User Functionality</p><br><br>
+
+
+
+
+<b color="red">Admin Screen's</b>
+<table>
+  
+  
+  <tr>
+    <td><img src="https://github.com/suraj-khot-19/img/blob/main/amazon_admin_1.jpg" alt="vid"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/suraj-khot-19/img/blob/main/amazon_admin_2.jpg" alt="vid"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/suraj-khot-19/img/blob/main/amazon_admin_3.jpg" alt="vid"></td>
+  </tr>
+</table>
+
+
 <b color="red">Admin Output's</b>
 <br><br><br>
 <table>
@@ -26,12 +46,6 @@
 </table>
 
 <br><br>
-
-<table>
-  <tr><b>2. user can delete product</b></tr>
-  <br><br>
-  <td><img src="link" alt="vid"></td>
-</table>
 <br><br>
 
 
