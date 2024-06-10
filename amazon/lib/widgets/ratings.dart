@@ -1,5 +1,4 @@
 import 'package:amazon/utils/exports.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class Ratings extends StatelessWidget {
   final double rating;

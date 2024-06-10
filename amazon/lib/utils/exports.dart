@@ -44,8 +44,11 @@ export 'package:amazon/screens/2_User/home/services/product_category.dart';
 export 'package:amazon/screens/2_User/search/screens/search_screen.dart';
 export 'package:amazon/screens/2_User/search/services/search_services.dart';
 export 'package:amazon/screens/2_User/search/widget/list_product.dart';
-export 'package:amazon/screens/2_User/product_description/product_description.dart';
-// export
+export 'package:amazon/screens/2_User/product_description/screens/product_description.dart';
+export 'package:amazon/models/ratings.dart';
+export 'package:amazon/widgets/ratings.dart';
+export 'package:flutter_rating_bar/flutter_rating_bar.dart';
+export 'package:amazon/screens/2_User/product_description/services/product_services.dart';
 // export
 // export
 // export

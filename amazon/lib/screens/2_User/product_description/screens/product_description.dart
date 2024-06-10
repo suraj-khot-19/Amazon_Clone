@@ -1,6 +1,4 @@
 import 'package:amazon/utils/exports.dart';
-import 'package:amazon/widgets/ratings.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class ProductDescription extends StatefulWidget {
   static const String routeName = "/description";
@@ -12,6 +10,34 @@ class ProductDescription extends StatefulWidget {
 }
 
 class _ProductDescriptionState extends State<ProductDescription> {
+  //puting initial values
+  double avgRatings = 0;
+  double myRatings = 0;
+  //instance of product services
+  ProductServices productServices = ProductServices();
+//update ratings
+  @override
+  void initState() {
+    super.initState();
+    double totalRatings = 0;
+    if (widget.product.rating != null) {
+      for (int i = 0; i < widget.product.rating!.length; i++) {
+        totalRatings += widget.product.rating![i].rating;
+        //checking user
+        if (widget.product.rating![i].userId ==
+            Provider.of<UserProider>(context, listen: false).user.id) {
+          myRatings = widget.product.rating![i].rating;
+        }
+      }
+    }
+    //adding avg rating
+    if (totalRatings != 0 &&
+        widget.product.rating != null &&
+        widget.product.rating!.isNotEmpty) {
+      avgRatings = totalRatings / widget.product.rating!.length;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +65,8 @@ class _ProductDescriptionState extends State<ProductDescription> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(widget.product.id!),
-                  Ratings(rating: 4),
+                  //shhowing avg ratings
+                  Ratings(rating: avgRatings),
                 ],
               ),
             ),
@@ -140,9 +167,10 @@ class _ProductDescriptionState extends State<ProductDescription> {
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
               ),
             ),
+            //adding ratings
             RatingBar.builder(
-              initialRating: 0,
-              maxRating: 5,
+              initialRating: myRatings,
+
               minRating: 1,
               allowHalfRating: true,
               direction: Axis.horizontal,
@@ -157,7 +185,14 @@ class _ProductDescriptionState extends State<ProductDescription> {
                   color: AppStyles.secondaryColor,
                 );
               },
-              onRatingUpdate: (ratings) {},
+              //updating ratings
+              onRatingUpdate: (rating) {
+                productServices.rateProduct(
+                  context: context,
+                  rating: rating,
+                  product: widget.product,
+                );
+              },
             ),
             CustomSpacer(
               height: 30,

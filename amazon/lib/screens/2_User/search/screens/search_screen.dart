@@ -11,7 +11,7 @@ class SearchScreen extends StatefulWidget {
 
 class _SearchScreenState extends State<SearchScreen> {
   final SearchServices searchQuery = SearchServices();
-  bool isLoading = true;
+
   List<Product>? productList;
   @override
   void initState() {
@@ -22,9 +22,7 @@ class _SearchScreenState extends State<SearchScreen> {
   void getSearchQuery() async {
     productList = await searchQuery.fetchProductWithSearch(
         context: context, searchQuery: widget.search);
-    setState(() {
-      isLoading = false;
-    });
+    setState(() {});
   }
 
   @override
@@ -55,7 +53,14 @@ class _SearchScreenState extends State<SearchScreen> {
                   child: ListView.builder(
                     itemCount: productList!.length,
                     itemBuilder: (context, index) {
-                      return SearchListProduct(product: productList![index]);
+                      return GestureDetector(
+                        onTap: () => Navigator.pushNamed(
+                            context, ProductDescription.routeName,
+                            arguments: productList![index]),
+                        child: SearchListProduct(
+                          product: productList![index],
+                        ),
+                      );
                     },
                   ),
                 ),
