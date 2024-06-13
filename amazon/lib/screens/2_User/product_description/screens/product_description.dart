@@ -38,6 +38,14 @@ class _ProductDescriptionState extends State<ProductDescription> {
     }
   }
 
+  void addToCart() {
+    ProductServices().addToCart(context: context, product: widget.product);
+    showSnackBar(context, "product added to cart");
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return CartScreen();
+    }));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -154,7 +162,8 @@ class _ProductDescriptionState extends State<ProductDescription> {
               child: CustomButton(
                 text: "Add To Cart",
                 color: true,
-                onTap: () {},
+                //adding it to cart
+                onTap: addToCart,
               ),
             ),
             CustomSpacer(

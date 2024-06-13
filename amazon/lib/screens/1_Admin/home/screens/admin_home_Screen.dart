@@ -64,55 +64,55 @@ class _AdminHomeState extends State<AdminHome> {
     return products == null
         ? CustomProgressIndicator()
         : Scaffold(
-            body: Padding(
-              padding: const EdgeInsets.all(10.0),
+            body: Container(
+              padding: EdgeInsets.all(10),
               child: GridView.builder(
-                  itemCount: products!.length,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    childAspectRatio: 0.9,
-                    mainAxisSpacing: 5,
-                    crossAxisSpacing: 5,
-                  ),
-                  itemBuilder: (context, index) {
-                    final productData = products![index];
-                    return Column(
-                      children: [
-                        SizedBox(
-                          height: 150,
-                          child: SingleOrder(
-                            img: productData.images[0],
-                          ),
+                itemCount: products!.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 0.9,
+                  mainAxisSpacing: 5,
+                  crossAxisSpacing: 5,
+                ),
+                itemBuilder: (context, index) {
+                  final productData = products![index];
+                  return Column(
+                    children: [
+                      SizedBox(
+                        height: 150,
+                        child: SingleOrder(
+                          img: productData.images[0],
                         ),
-                        Expanded(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Expanded(
-                                child: Text(
-                                  productData.name,
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 2,
-                                ),
+                      ),
+                      Expanded(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Expanded(
+                              child: Text(
+                                productData.name,
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 2,
                               ),
-                              InkWell(
-                                onTap: () => deleteProduct(productData, index),
-                                child: Icon(
-                                  Icons.delete_forever_rounded,
-                                  color: Colors.red,
-                                ),
+                            ),
+                            InkWell(
+                              onTap: () => deleteProduct(productData, index),
+                              child: Icon(
+                                Icons.delete_forever_rounded,
+                                color: Colors.red,
                               ),
-                            ],
-                          ),
-                        )
-                      ],
-                    );
-                  }),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  );
+                },
+              ),
             ),
-            floatingActionButtonLocation:
-                FloatingActionButtonLocation.centerDocked,
             floatingActionButton: FloatingActionButton(
               backgroundColor: AppStyles.selectedNavBarColor,
+              mini: true,
               tooltip: "Add Product",
               onPressed: () {
                 Navigator.pushNamed(context, AdminAddProduct.routeName);
@@ -120,7 +120,7 @@ class _AdminHomeState extends State<AdminHome> {
               child: Icon(
                 Icons.add,
                 color: Colors.black,
-                size: 40,
+                size: 30,
               ),
             ),
           );

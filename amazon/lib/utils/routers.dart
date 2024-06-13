@@ -1,3 +1,4 @@
+import 'package:amazon/screens/2_User/order_detail/order_detail_screen.dart';
 import 'package:amazon/utils/exports.dart';
 
 Route<dynamic> generateRoute(RouteSettings routeSettings) {
@@ -44,7 +45,7 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
           search: searchQuery,
         ),
       );
-    //SearchScreen
+    //Product Desciption
     case ProductDescription.routeName:
       var product = routeSettings.arguments as Product;
       return MaterialPageRoute(
@@ -53,6 +54,23 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
           product: product,
         ),
       );
+    //Address Screen
+    case AddressScreen.routeName:
+      var amt = routeSettings.arguments as String;
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => AddressScreen(
+          totalAmt: amt,
+        ),
+      );
+    //OrderDetails Screen
+    case OrderDetailsScreen.routeName:
+      var order = routeSettings.arguments as Order;
+      return MaterialPageRoute(
+          settings: routeSettings,
+          builder: (_) => OrderDetailsScreen(
+                order: order,
+              ));
     default:
       return MaterialPageRoute(
         builder: (_) => const Scaffold(

@@ -19,7 +19,7 @@ export 'package:amazon/screens/bottom_navigation_bar.dart';
 export 'package:amazon/widgets/custom_spacer.dart';
 export 'package:amazon/screens/2_User/profile/widgets/button_with_border.dart';
 export 'package:amazon/screens/2_User/profile/widgets/below_app_bar.dart';
-export 'package:amazon/screens/2_User/profile/widgets/list_view.dart';
+export 'package:amazon/screens/2_User/profile/widgets/order_list_view.dart';
 export 'package:amazon/screens/2_User/profile/widgets/single_order.dart';
 export 'package:amazon/screens/2_User/home/widgets/app_bar_search.dart';
 export 'package:amazon/screens/2_User/home/widgets/order_type_row.dart';
@@ -49,7 +49,11 @@ export 'package:amazon/models/ratings.dart';
 export 'package:amazon/widgets/ratings.dart';
 export 'package:flutter_rating_bar/flutter_rating_bar.dart';
 export 'package:amazon/screens/2_User/product_description/services/product_services.dart';
-// export
-// export
+export 'package:amazon/screens/2_User/home/services/deal_of_day_services.dart';
+export 'package:amazon/screens/2_User/cart/cart_subtotal.dart';
+export 'package:amazon/screens/2_User/cart/single_product_cart.dart';
+export 'package:amazon/screens/2_User/address/screens/address_screen.dart';
+export 'package:pay/pay.dart';
+export 'package:amazon/models/order.dart';
 // export
 // export

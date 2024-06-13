@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { productSchema } = require('./product_model');
 //creating scema
 const userScema = mongoose.Schema({
     name: {
@@ -22,15 +23,6 @@ const userScema = mongoose.Schema({
     password: {
         required: true,
         type: String,
-        // validate: {
-        //     validator: (value) =>  {
-        //         const pass =
-        //             /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(\W|_)).{6,}$/;
-        //         return value.match(pass);
-
-        //     },
-        //     message: "Please enter strong password",
-        // },
 
     },
     address: {
@@ -41,7 +33,15 @@ const userScema = mongoose.Schema({
         type: String,
         default: 'user',
     },
-    //cart
+    cart: [
+        {
+            product:productSchema,
+            quantity:{
+                type:Number,
+                required:true,
+            }
+        }
+    ]
 });
 //creating model
 const User = mongoose.model("User", userScema);

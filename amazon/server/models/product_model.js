@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const ratingSchema = require('./rating');
 //creating scema
-const productrSchema = mongoose.Schema({
+const productSchema = mongoose.Schema({
     name: {
         required: true,
         type: String,
@@ -36,5 +36,5 @@ const productrSchema = mongoose.Schema({
 
 });
 //creating model
-const Product = mongoose.model("Product", productrSchema);
-module.exports = Product;
+const Product = mongoose.model("Product", productSchema);
+module.exports = {Product ,productSchema};

@@ -25,7 +25,7 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
         ),
       ),
       body: SingleChildScrollView(
-        child: const Column(
+        child: Column(
           children: [
             AddressBar(),
             CustomSpacer(height: 15),
@@ -33,7 +33,12 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
             CustomSpacer(height: 15),
             CrousalImg(),
             CustomSpacer(height: 10),
-            DealOfDay()
+            DealOfDay(),
+            CustomSpacer(height: 10),
+            Container(
+              height: 2,
+              color: Colors.black38,
+            ),
           ],
         ),
       ),

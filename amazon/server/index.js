@@ -9,6 +9,8 @@ const adminRoute = require("./routers/admin");
 const categoryProductRoute=require("./routers/categort_product");
 const searchScreenRouter = require("./routers/search");
 const ratingRouter = require("./routers/rating");
+const dealOfTheDayRoute = require("./routers/deal-of-day");
+const userRoute = require("./routers/user_route");
 
 //initalization
 const PORT=3000;
@@ -19,9 +21,10 @@ app.use(express.json());
 app.use(authRouter);
 app.use(adminRoute);
 app.use(categoryProductRoute);
-
 app.use(searchScreenRouter);
 app.use(ratingRouter);
+app.use(dealOfTheDayRoute);
+app.use(userRoute);
 
 //connection
 mongoose.connect(db).then(()=>{

@@ -45,7 +45,7 @@ class _SearchScreenState extends State<SearchScreen> {
           ? CustomProgressIndicator()
           : Column(
               children: [
-                BelowAppBar(),
+                AddressBar(),
                 CustomSpacer(
                   height: 10,
                 ),

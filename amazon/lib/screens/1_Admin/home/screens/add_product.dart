@@ -63,6 +63,13 @@ class _AdminAddProductState extends State<AdminAddProduct> {
     }
   }
 
+//fn to remove an image
+  void removeImg(int index) {
+    setState(() {
+      productImage.removeAt(index);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -93,21 +100,39 @@ class _AdminAddProductState extends State<AdminAddProduct> {
                 productImage.isNotEmpty
                     ? CarouselSlider(
                         items: productImage
+                            .asMap()
+                            .entries
                             .map(
-                              (images) => Builder(
-                                builder: (context) {
-                                  return Image.file(
-                                    images,
-                                    fit: BoxFit.fitWidth,
+                              (images) => Stack(
+                                children: [
+                                  Image.file(
+                                    images.value,
+                                    fit: BoxFit.contain,
                                     height: 200,
                                     width: double.infinity,
-                                  );
-                                },
+                                  ),
+                                  Positioned(
+                                    top: 8,
+                                    right: 8,
+                                    child: GestureDetector(
+                                      onTap: () => removeImg(images.key),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            shape: BoxShape.circle),
+                                        child: Icon(
+                                          Icons.close,
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             )
                             .toList(),
                         options: CarouselOptions(
-                          height: 400,
+                          height: 250,
                           enableInfiniteScroll: productImage.length > 1,
                           viewportFraction: 1,
                         ),

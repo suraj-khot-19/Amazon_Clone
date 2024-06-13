@@ -12,10 +12,10 @@ class AddressBar extends StatelessWidget {
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            Color.fromARGB(255, 144, 226, 221),
-            Color.fromARGB(255, 162, 236, 233),
+            Color.fromARGB(225, 144, 226, 221),
+            Color.fromARGB(225, 162, 236, 233),
           ],
-          stops: [0.1, 0.2],
+          stops: [0.5, 1.0],
         ),
       ),
       child: Row(

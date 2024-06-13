@@ -15,25 +15,28 @@ class CrousalImg extends StatelessWidget {
       "assets/images/slide_images/1717568262533.jpg",
       "assets/images/slide_images/1717568262539.jpg",
     ];
-    return CarouselSlider(
-      items: netImages
-          .map(
-            (images) => Builder(
-              builder: (context) {
-                return Image.asset(
-                  images,
-                  fit: BoxFit.fitWidth,
-                  height: 200,
-                  width: double.infinity,
-                );
-              },
-            ),
-          )
-          .toList(),
-      options: CarouselOptions(
-        height: 200,
-        viewportFraction: 1,
-        autoPlay: true,
+    return GestureDetector(
+      onTap: () => showSnackBar(context, "please search for product"),
+      child: CarouselSlider(
+        items: netImages
+            .map(
+              (images) => Builder(
+                builder: (context) {
+                  return Image.asset(
+                    images,
+                    fit: BoxFit.fitWidth,
+                    height: 200,
+                    width: double.infinity,
+                  );
+                },
+              ),
+            )
+            .toList(),
+        options: CarouselOptions(
+          height: 200,
+          viewportFraction: 1,
+          autoPlay: true,
+        ),
       ),
     );
   }

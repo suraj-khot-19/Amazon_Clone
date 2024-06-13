@@ -23,6 +23,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
 
   @override
   Widget build(BuildContext context) {
+    final userCartLength = context.watch<UserProider>().user.cart.length;
     return Scaffold(
       body: _items[isSelected],
       bottomNavigationBar: BottomNavigationBar(
@@ -83,8 +84,9 @@ class _BottomNavigationState extends State<BottomNavigation> {
                     ? AppStyles.selectedNavBarColor
                     : AppStyles.backgroundColor,
               ))),
-              child: const Badge(
-                  label: Text('2'), child: Icon(Icons.shopping_cart_rounded)),
+              child: Badge(
+                  label: Text(userCartLength.toString()),
+                  child: Icon(Icons.shopping_cart_rounded)),
             ),
             label: 'shoping_cart',
           ),
