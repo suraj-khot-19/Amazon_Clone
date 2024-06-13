@@ -42,7 +42,17 @@
   <tr>
     <td><img src="https://github.com/suraj-khot-19/img/blob/main/amazon_1.jpg" alt="vid"></td>
   </tr>
+  <tr>
+    <td><img src="https://github.com/suraj-khot-19/img/blob/main/IMG_20240613_130910.jpg" alt="vid"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/suraj-khot-19/img/blob/main/IMG_20240613_130830.jpg" alt="vid"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/suraj-khot-19/img/blob/main/IMG_20240613_130845.jpg" alt="vid"></td>
+  </tr>
 </table>
+
 
 
 [//]: <> (User Video outputs.)
