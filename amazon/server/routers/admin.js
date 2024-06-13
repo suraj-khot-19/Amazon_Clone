@@ -1,8 +1,8 @@
 const express = require("express");
 const adminRoute = express.Router();
 const adminMiddelware = require("../middlewares/admin_middleware");
-const {Product} = require("../models/product_model");
-
+const { Product } = require("../models/product_model");
+const Order = require("../models/order");
 //ading product api
 adminRoute.post('/admin/add-product', adminMiddelware, async (req, res) => {
     try {
@@ -50,6 +50,30 @@ adminRoute.post('/admin/delete-product', adminMiddelware, async (req, res) => {
         res.status(500).json({ error: e.message });
     }
 
+});
+
+//get order details
+adminRoute.get("/admin/order-detail", adminMiddelware, async (req, res) => {
+    try {
+        let order = await Order.find({});
+        res.json(order);
+    } catch (e) {
+        res.status(500).json({ error: e.message });
+    }
+});
+
+//admin to change status
+adminRoute.post("/admin/order-status",adminMiddelware,async(req,res)=>{
+    try {
+        const {id,status}=req.body;
+        let order = await Order.findById(id);
+        order.status=status;
+        //order.status+=1; fine
+        order=await order.save();
+        res.json(order);
+    } catch (e) {
+        res.status(500).json({ error: e.message });
+    }
 });
 //exports
 module.exports = adminRoute;

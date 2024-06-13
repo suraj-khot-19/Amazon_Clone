@@ -112,4 +112,69 @@ class AdminServices {
       return showSnackBar(context, e.toString());
     }
   }
+
+  //to see order details
+  Future<List<Order>> getOrderDetails({
+    required BuildContext context,
+  }) async {
+    List<Order> orderList = [];
+    final userProvider = Provider.of<UserProider>(context, listen: false);
+    try {
+      http.Response response = await http.get(
+        Uri.parse("$uri/admin/order-detail"),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+          "auth-token": userProvider.user.token,
+        },
+      );
+      httpErrorHandling(
+          response: response,
+          onSuccess: () {
+            for (int i = 0; i < jsonDecode(response.body).length; i++) {
+              orderList.add(
+                Order.fromJson(
+                  jsonEncode(
+                    jsonDecode(response.body)[i],
+                  ),
+                ),
+              );
+            }
+          },
+          context: context);
+    } catch (e) {
+      showSnackBar(context, e.toString());
+    }
+    return orderList;
+  }
+
+  //services to change status
+
+  //to see order details
+  Future<List<Order>> changeStatus({
+    required BuildContext context,
+    required int status,
+    required Order order,
+    required VoidCallback onSuccess,
+  }) async {
+    List<Order> orderList = [];
+    final userProvider = Provider.of<UserProider>(context, listen: false);
+    try {
+      http.Response response = await http.post(
+        Uri.parse("$uri/admin/order-status"),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+          "auth-token": userProvider.user.token,
+        },
+        body: jsonEncode({
+          'id': order.id,
+          'status': status,
+        }),
+      );
+      httpErrorHandling(
+          response: response, onSuccess: onSuccess, context: context);
+    } catch (e) {
+      showSnackBar(context, e.toString());
+    }
+    return orderList;
+  }
 }

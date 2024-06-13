@@ -1,3 +1,4 @@
+import 'package:amazon/screens/1_Admin/all_inbox/admin_order_details.dart';
 import 'package:amazon/utils/exports.dart';
 
 class AdminBottomBar extends StatefulWidget {
@@ -14,9 +15,7 @@ class AdminBottomBarState extends State<AdminBottomBar> {
     Center(
       child: Text("1"),
     ),
-    Center(
-      child: Text("1"),
-    ),
+    AdminOrderDetails(),
   ];
 
   void changeIndex(int index) {
