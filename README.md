@@ -13,6 +13,14 @@
   </tr>
   <tr>
     <td><img src="https://github.com/suraj-khot-19/img/blob/main/amazon_admin_3.jpg" alt="vid"></td>
+    <tr>
+    <td><img src="https://github.com/suraj-khot-19/img/blob/main/IMG_20240614_182629.jpg" alt="vid"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/suraj-khot-19/img/blob/main/IMG_20240614_182538.jpg" alt="vid"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/suraj-khot-19/img/blob/main/IMG_20240614_182551.jpg" alt="vid"></td>
   </tr>
 </table>
 
@@ -43,7 +51,7 @@
     <td><img src="https://github.com/suraj-khot-19/img/blob/main/amazon_1.jpg" alt="vid"></td>
   </tr>
   <tr>
-    <td><img src="https://github.com/suraj-khot-19/img/blob/main/IMG_20240613_130910.jpg" alt="vid"></td>
+    <td><img src="https://github.com/suraj-khot-19/img/blob/main/IMG_20240614_182604.jpg" alt="vid"></td>
   </tr>
   <tr>
     <td><img src="https://github.com/suraj-khot-19/img/blob/main/IMG_20240613_130830.jpg" alt="vid"></td>
