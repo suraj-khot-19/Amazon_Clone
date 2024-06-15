@@ -17,11 +17,15 @@
     <td><img src="https://github.com/suraj-khot-19/img/blob/main/IMG_20240614_182629.jpg" alt="vid"></td>
   </tr>
   <tr>
+    <td><img src="https://github.com/suraj-khot-19/img/blob/main/a1.jpg" alt="vid"></td>
+  </tr>
+  <tr>
     <td><img src="https://github.com/suraj-khot-19/img/blob/main/IMG_20240614_182538.jpg" alt="vid"></td>
   </tr>
   <tr>
     <td><img src="https://github.com/suraj-khot-19/img/blob/main/IMG_20240614_182551.jpg" alt="vid"></td>
   </tr>
+  
 </table>
 
 [//]: <> (Admin video outputs.)
@@ -39,7 +43,11 @@
   <td><img src="https://github.com/suraj-khot-19/img/blob/main/amazon_delete_product.gif" alt="vid"></td>
 </table>
 <br><br>
-
+<br><br>
+<table>
+  <tr><b>1. Admin Analytics on product based on categories Using Graph </b></tr>
+  <td><img src="https://github.com/suraj-khot-19/img/blob/main/a2.gif" alt="vid"></td>
+</table>
 
 
 
@@ -58,6 +66,21 @@
   </tr>
   <tr>
     <td><img src="https://github.com/suraj-khot-19/img/blob/main/IMG_20240613_130845.jpg" alt="vid"></td>
+  </tr>
+<tr>
+    <td><img src="https://github.com/suraj-khot-19/img/blob/main/u1.jpg" alt="vid"></td>
+  </tr>
+<tr>
+    <td><img src="https://github.com/suraj-khot-19/img/blob/main/u2.jpg" alt="vid"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/suraj-khot-19/img/blob/main/u3.jpg" alt="vid"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/suraj-khot-19/img/blob/main/u4.jpg" alt="vid"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/suraj-khot-19/img/blob/main/u5.jpg" alt="vid"></td>
   </tr>
 </table>
 
