@@ -80,7 +80,7 @@ adminRoute.post("/admin/order-status", adminMiddelware, async (req, res) => {
 //admin anylitics
 adminRoute.get("/admin/analytics", adminMiddelware, async (req, res) => {
     try {
-        const order = Order.find({});
+        const order =await Order.find({});
         let totalEarnings = 0;
         for (let i = 0; i < order.length; i++) {
             for (let j = 0; j < order[i].products.length; j++) {

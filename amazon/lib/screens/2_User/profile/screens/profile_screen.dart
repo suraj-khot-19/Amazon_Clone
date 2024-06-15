@@ -1,10 +1,41 @@
+import 'package:amazon/screens/2_User/profile/screens/privous_orders.dart';
+import 'package:amazon/screens/2_User/profile/screens/your_orders.dart';
 import 'package:amazon/utils/exports.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
   @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+//conform lgout
+  void confirmLogout(User user) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            icon: Icon(Icons.person),
+            content: Text("${user.name.toUpperCase()} are you sure to Logout?"),
+            actionsPadding: EdgeInsets.symmetric(horizontal: 20),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text("Cancel")),
+              TextButton(
+                  onPressed: () => ProfileServices().logout(context: context),
+                  child: Text("Logout")),
+            ],
+          );
+        });
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final user = Provider.of<UserProider>(context, listen: false).user;
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(50),
@@ -68,12 +99,17 @@ class ProfileScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               ButtonWithBorder(
-                text: "Your Orders",
-                onTap: () {},
-              ),
+                  text: "Your Orders",
+                  onTap: () =>
+                      Navigator.pushNamed(context, YourOrders.routeName)),
               ButtonWithBorder(
-                text: "Turn Seller",
-                onTap: () {},
+                text: "Your Privious Orders",
+                onTap: () {
+                  Navigator.pushNamed(
+                    context,
+                    PrivousOrders.routeName,
+                  );
+                },
               )
             ],
           ),
@@ -85,11 +121,13 @@ class ProfileScreen extends StatelessWidget {
             children: [
               ButtonWithBorder(
                 text: "Log Out",
-                onTap: () {},
+                onTap: () => confirmLogout(user),
               ),
               ButtonWithBorder(
                 text: "Your Wish List",
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(context, CartScreen.routeName);
+                },
               )
             ],
           ),
@@ -106,7 +144,9 @@ class ProfileScreen extends StatelessWidget {
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                 ),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, YourOrders.routeName);
+                  },
                   child: const Text(
                     "See all",
                     style: TextStyle(

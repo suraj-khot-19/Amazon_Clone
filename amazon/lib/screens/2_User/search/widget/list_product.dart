@@ -87,12 +87,20 @@ class SearchListProduct extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Text(
-                      "In Stock",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: AppStyles.selectedNavBarColor),
-                    ),
+
+                    product.quantity == 0
+                        ? Text(
+                            "Out Of Stock",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, color: Colors.red),
+                          )
+                        : Text(
+                            "In Stock",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: AppStyles.selectedNavBarColor),
+                          ),
+
                     Text("Get it on Friday Aug 19"),
                   ],
                 ),

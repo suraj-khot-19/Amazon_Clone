@@ -1,5 +1,3 @@
-import 'package:amazon/screens/2_User/order_detail/order_detail_screen.dart';
-import 'package:amazon/screens/2_User/profile/services/profile_services.dart';
 import 'package:amazon/utils/exports.dart';
 
 class OrderList extends StatefulWidget {
@@ -28,18 +26,28 @@ class _OrderListState extends State<OrderList> {
     return orders == null
         ? CustomProgressIndicator()
         : SizedBox(
-            height: 180,
+            height: 400,
             child: ListView.builder(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               scrollDirection: Axis.horizontal,
               itemCount: orders!.length,
               itemBuilder: (context, index) {
                 return InkWell(
-                    onTap: () => Navigator.pushNamed(
-                        context, OrderDetailsScreen.routeName,
-                        arguments: orders![index]),
-                    child:
-                        SingleOrder(img: orders![index].products[0].images[0]));
+                  onTap: () => Navigator.pushNamed(
+                      context, OrderDetailsScreen.routeName,
+                      arguments: orders![index]),
+                  child: orders![index].status >= 3
+                      ? SizedBox()
+                      : Column(
+                          children: [
+                            SingleOrder(
+                              img: orders![index].products[0].images[0],
+                              isChange: true,
+                              passTheText: orders![index].products[0].name,
+                            ),
+                          ],
+                        ),
+                );
               },
             ),
           );

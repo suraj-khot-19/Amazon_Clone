@@ -1,4 +1,3 @@
-import 'package:amazon/screens/2_User/order_detail/order_detail_screen.dart';
 import 'package:amazon/utils/exports.dart';
 
 class AdminOrderDetails extends StatefulWidget {

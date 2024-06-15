@@ -149,22 +149,36 @@ class _ProductDescriptionState extends State<ProductDescription> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: CustomButton(
-                text: "Buy Now",
-                onTap: () {},
-              ),
+              child: widget.product.quantity == 0
+                  ? CustomButton(
+                      text: "Sorry Out Of Stock",
+                      onTap: () => showSnackBar(context,
+                          "Sorry ${widget.product.name}, is out of stock now"),
+                      red: true,
+                    )
+                  : CustomButton(
+                      text: "Buy Now",
+                      onTap: () {},
+                    ),
             ),
             CustomSpacer(
               height: 10,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: CustomButton(
-                text: "Add To Cart",
-                color: true,
-                //adding it to cart
-                onTap: addToCart,
-              ),
+              child: widget.product.quantity == 0
+                  ? CustomButton(
+                      text: "Sorry Out Of Stock",
+                      onTap: () => showSnackBar(context,
+                          "Sorry ${widget.product.name}, is out of stock now"),
+                      red: true,
+                    )
+                  : CustomButton(
+                      text: "Add To Cart",
+                      color: true,
+                      //adding it to cart
+                      onTap: addToCart,
+                    ),
             ),
             CustomSpacer(
               height: 10,

@@ -172,23 +172,51 @@ class _AddressScreenState extends State<AddressScreen> {
                       ),
                     ),
               //pay button
-              GooglePayButton(
-                paymentConfiguration:
-                    PaymentConfiguration.fromJsonString("googlepay.json"),
-                onPaymentResult: onGooglePayResult,
-                paymentItems: paymentItems,
-                height: 50,
-                width: double.infinity,
-                margin: EdgeInsets.all(8.0),
-                loadingIndicator: const Center(
-                  child: CircularProgressIndicator(),
-                ),
-                onPressed: () => runOnPayPress(address),
+              // GooglePayButton(
+              //   paymentConfiguration:
+              //       PaymentConfiguration.fromJsonString("googlepay.json"),
+              //   onPaymentResult: onGooglePayResult,
+              //   paymentItems: paymentItems,
+              //   height: 50,
+              //   width: double.infinity,
+              //   margin: EdgeInsets.all(8.0),
+              //   loadingIndicator: const Center(
+              //     child: CircularProgressIndicator(),
+              //   ),
+              //   onPressed: () => runOnPayPress(address),
+              // ),
+              FutureBuilder(
+                future: _loadGooglePayConfig(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return GooglePayButton(
+                      paymentConfiguration: PaymentConfiguration.fromJsonString(
+                          snapshot.data.toString()),
+                      onPaymentResult: onGooglePayResult,
+                      paymentItems: paymentItems,
+                      height: 50,
+                      width: double.infinity,
+                      margin: EdgeInsets.all(8.0),
+                      loadingIndicator: Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                      onPressed: () => runOnPayPress(address),
+                    );
+                  } else {
+                    return CircularProgressIndicator();
+                  }
+                },
               ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  Future<String> _loadGooglePayConfig() async {
+    // Load the JSON configuration file from assets
+    return await DefaultAssetBundle.of(context)
+        .loadString('assets/googlepay.json');
   }
 }

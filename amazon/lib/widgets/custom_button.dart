@@ -5,12 +5,14 @@ class CustomButton extends StatelessWidget {
   final VoidCallback onTap;
   final bool isLoading;
   final bool color;
+  final bool? red;
   const CustomButton({
     this.isLoading = false,
     super.key,
     required this.text,
     required this.onTap,
     this.color = false,
+    this.red,
   });
 
   @override
@@ -19,7 +21,11 @@ class CustomButton extends StatelessWidget {
       width: double.infinity,
       height: 50,
       decoration: BoxDecoration(
-        color: color ? Colors.amberAccent : AppStyles.secondaryColor,
+        color: red == null
+            ? color
+                ? Colors.amberAccent
+                : AppStyles.secondaryColor
+            : Colors.black26,
         borderRadius: BorderRadius.circular(4),
       ),
       child: InkWell(
@@ -32,7 +38,12 @@ class CustomButton extends StatelessWidget {
               : Text(
                   text,
                   style: TextStyle(
-                      color: color ? Colors.black : Colors.white, fontSize: 20),
+                      color: red == null
+                          ? color
+                              ? Colors.black
+                              : Colors.white
+                          : Colors.red,
+                      fontSize: 20),
                 ),
         ),
       ),

@@ -182,7 +182,7 @@ class AdminServices {
   }) async {
     final userProvider = Provider.of<UserProider>(context, listen: false);
     List<Sales> sales = [];
-    int totalEarning = 0;
+    int totalEarnings = 0;
     try {
       http.Response response = await http.get(
         Uri.parse("$uri/admin/analytics"),
@@ -192,31 +192,31 @@ class AdminServices {
         },
       );
       httpErrorHandling(
-          response: response,
-          onSuccess: () {
-            var res = jsonDecode(response.body);
-
-            totalEarning = res['totalEarnings'];
-            sales = [
-              Sales("Mobile", res['mobileEarnigs']),
-              Sales("Fresh", res['freshEarnigs']),
-              Sales("Fashion", res['fashionEarnigs']),
-              Sales("Electronics", res['electronicsEarnigs']),
-              Sales("Home", res['homeEarnigs']),
-              Sales("Deals", res['dealsEarnigs']),
-              Sales("Beauty", res['beautyEarnigs']),
-              Sales("Appliances", res['appliancesEarnigs']),
-              Sales("Book", res['booksEarnigs']),
-              Sales("Everyday", res['everydayEarnigs']),
-            ];
-          },
-          context: context);
+        response: response,
+        onSuccess: () {
+          var res = jsonDecode(response.body);
+          totalEarnings = res['totalEarnings'];
+          sales = [
+            Sales("Mobile", res['mobileEarnigs']),
+            Sales("Fresh", res['freshEarnigs']),
+            Sales("Fashion", res['fashionEarnigs']),
+            Sales("Electronics", res['electronicsEarnigs']),
+            Sales("Home", res['homeEarnigs']),
+            Sales("Deals", res['dealsEarnigs']),
+            Sales("Beauty", res['beautyEarnigs']),
+            Sales("Appliances", res['appliancesEarnigs']),
+            Sales("Book", res['booksEarnigs']),
+            Sales("Everyday", res['everydayEarnigs']),
+          ];
+        },
+        context: context,
+      );
     } catch (e) {
       showSnackBar(context, e.toString());
     }
     return {
       'sales': sales,
-      'totalErnings': totalEarning,
+      'totalEarnings': totalEarnings,
     };
   }
 }

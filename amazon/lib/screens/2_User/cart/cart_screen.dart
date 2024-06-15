@@ -1,6 +1,7 @@
 import 'package:amazon/utils/exports.dart';
 
 class CartScreen extends StatelessWidget {
+  static const String routeName = "/cart";
   const CartScreen({super.key});
 
   @override

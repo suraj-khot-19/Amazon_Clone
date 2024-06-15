@@ -1,4 +1,5 @@
-import 'package:amazon/screens/2_User/order_detail/order_detail_screen.dart';
+import 'package:amazon/screens/2_User/profile/screens/privous_orders.dart';
+import 'package:amazon/screens/2_User/profile/screens/your_orders.dart';
 import 'package:amazon/utils/exports.dart';
 
 Route<dynamic> generateRoute(RouteSettings routeSettings) {
@@ -71,6 +72,24 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
           builder: (_) => OrderDetailsScreen(
                 order: order,
               ));
+    //user order screen
+    case YourOrders.routeName:
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => YourOrders(),
+      );
+    //cart screen
+    case CartScreen.routeName:
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => CartScreen(),
+      );
+    //Order List
+    case PrivousOrders.routeName:
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => PrivousOrders(),
+      );
     default:
       return MaterialPageRoute(
         builder: (_) => const Scaffold(

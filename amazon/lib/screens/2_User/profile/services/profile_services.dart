@@ -34,4 +34,18 @@ class ProfileServices {
     }
     return orderList;
   }
+
+//logout
+  void logout({required BuildContext context}) async {
+    try {
+      SharedPreferences sharedPreferences =
+          await SharedPreferences.getInstance();
+      //just making this token empty
+      await sharedPreferences.setString("auth-token", '');
+      Navigator.pushNamedAndRemoveUntil(
+          context, AuthScreen.routeName, (route) => false);
+    } catch (e) {
+      showSnackBar(context, e.toString());
+    }
+  }
 }

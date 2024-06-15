@@ -14,7 +14,7 @@ export 'package:amazon/providers/user_provider.dart';
 export 'package:provider/provider.dart';
 export 'package:amazon/screens/2_User/home/screens/home_screen.dart';
 export 'package:amazon/screens/2_User/cart/cart_screen.dart';
-export 'package:amazon/screens/2_User/profile/profile_screen.dart';
+export 'package:amazon/screens/2_User/profile/screens/profile_screen.dart';
 export 'package:amazon/screens/bottom_navigation_bar.dart';
 export 'package:amazon/widgets/custom_spacer.dart';
 export 'package:amazon/screens/2_User/profile/widgets/button_with_border.dart';
@@ -59,5 +59,8 @@ export 'package:amazon/models/sales.dart';
 export 'package:amazon/screens/1_Admin/all_inbox/admin_order_details.dart';
 export 'package:amazon/screens/1_Admin/analytics/analytics_screen.dart';
 export 'package:syncfusion_flutter_charts/charts.dart';
+export 'package:amazon/screens/2_User/order_detail/order_detail_screen.dart';
+export 'package:amazon/screens/2_User/profile/services/profile_services.dart';
+// export
 // export
 // export

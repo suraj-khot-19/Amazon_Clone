@@ -1,3 +1,4 @@
+import 'package:amazon/screens/1_Admin/profile_admin/admin_profile_screen.dart';
 import 'package:amazon/utils/exports.dart';
 
 class AdminBottomBar extends StatefulWidget {
@@ -13,6 +14,7 @@ class AdminBottomBarState extends State<AdminBottomBar> {
     AdminHome(),
     AnalyticsScreen(),
     AdminOrderDetails(),
+    AdminProfile(),
   ];
 
   void changeIndex(int index) {
@@ -23,6 +25,7 @@ class AdminBottomBarState extends State<AdminBottomBar> {
 
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<UserProider>(context, listen: false).user;
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(50),
@@ -49,9 +52,9 @@ class AdminBottomBarState extends State<AdminBottomBar> {
                 ),
               ),
               Text(
-                "Hello, Admin",
-                style: TextStyle(fontWeight: FontWeight.bold),
-              )
+                "Hello, ${user.name}",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+              ),
             ],
           ),
         ),
@@ -118,6 +121,23 @@ class AdminBottomBarState extends State<AdminBottomBar> {
               child: Icon(Icons.all_inbox_rounded),
             ),
             label: 'Inbox',
+          ),
+          //account
+          BottomNavigationBarItem(
+            icon: Container(
+              padding: const EdgeInsets.only(bottom: 10, top: 2),
+              width: 30,
+              decoration: BoxDecoration(
+                  border: Border(
+                      top: BorderSide(
+                width: 5,
+                color: isSelected == 3
+                    ? AppStyles.selectedNavBarColor
+                    : AppStyles.backgroundColor,
+              ))),
+              child: Icon(Icons.person),
+            ),
+            label: 'Account',
           ),
         ],
       ),
