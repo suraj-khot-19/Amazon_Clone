@@ -11,6 +11,7 @@ const searchScreenRouter = require("./routers/search");
 const ratingRouter = require("./routers/rating");
 const dealOfTheDayRoute = require("./routers/deal-of-day");
 const userRoute = require("./routers/user_route");
+const allProductRouter = require("./routers/all_product");
 
 //initalization
 const PORT=3000;
@@ -19,6 +20,7 @@ const db ="mongodb+srv://suraj:suraj123@flutteramazoncloneapp.zspb2e1.mongodb.ne
 //middleware
 app.use(express.json());
 app.use(authRouter);
+app.use(allProductRouter);
 app.use(adminRoute);
 app.use(categoryProductRoute);
 app.use(searchScreenRouter);

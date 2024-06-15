@@ -1,3 +1,4 @@
+import 'package:amazon/screens/spalsh_screen.dart';
 import 'package:amazon/utils/exports.dart';
 
 void main() {
@@ -32,25 +33,28 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Amazon',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          scaffoldBackgroundColor: AppStyles.backgroundColor,
-          colorScheme:
-              const ColorScheme.light(primary: AppStyles.secondaryColor),
-          appBarTheme: const AppBarTheme(
-            iconTheme: IconThemeData(
-              color: Colors.black,
-            ),
-            elevation: 0,
+      title: 'Amazon',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        scaffoldBackgroundColor: AppStyles.backgroundColor,
+        colorScheme: const ColorScheme.light(primary: AppStyles.secondaryColor),
+        appBarTheme: const AppBarTheme(
+          iconTheme: IconThemeData(
+            color: Colors.black,
           ),
-          useMaterial3: true,
+          elevation: 0,
         ),
-        onGenerateRoute: (settings) => generateRoute(settings),
-        home: Provider.of<UserProider>(context).user.token.isNotEmpty
-            ? Provider.of<UserProider>(context).user.type == "user"
-                ? const BottomNavigation()
-                : AdminBottomBar()
-            : const AuthScreen());
+        useMaterial3: true,
+      ),
+      onGenerateRoute: (settings) => generateRoute(settings),
+      home: SplashScreen(),
+    );
   }
 }
+/*
+Provider.of<UserProider>(context).user.token.isNotEmpty
+          ? Provider.of<UserProider>(context).user.type == "user"
+              ? const BottomNavigation()
+              : AdminBottomBar()
+          : const AuthScreen(),
+*/
