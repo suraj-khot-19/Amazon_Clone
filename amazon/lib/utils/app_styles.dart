@@ -1,7 +1,6 @@
 import 'package:amazon/utils/exports.dart';
 
-// String uri = 'http://<IP Address>:3000';
-String uri = 'http://192.168.221.105:3000';
+String uri = 'http://<IP Address>:3000';
 
 class AppStyles {
   // COLORS
