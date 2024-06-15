@@ -173,7 +173,8 @@ class _AddressScreenState extends State<AddressScreen> {
                     ),
               //pay button
               GooglePayButton(
-                paymentConfigurationAsset: "googlepay.json",
+                paymentConfiguration:
+                    PaymentConfiguration.fromJsonString("googlepay.json"),
                 onPaymentResult: onGooglePayResult,
                 paymentItems: paymentItems,
                 height: 50,

@@ -150,13 +150,12 @@ class AdminServices {
   //services to change status
 
   //to see order details
-  Future<List<Order>> changeStatus({
+  void changeStatus({
     required BuildContext context,
     required int status,
     required Order order,
     required VoidCallback onSuccess,
   }) async {
-    List<Order> orderList = [];
     final userProvider = Provider.of<UserProider>(context, listen: false);
     try {
       http.Response response = await http.post(
@@ -175,6 +174,49 @@ class AdminServices {
     } catch (e) {
       showSnackBar(context, e.toString());
     }
-    return orderList;
+  }
+
+//analytics
+  Future<Map<String, dynamic>> viewAnalytics({
+    required BuildContext context,
+  }) async {
+    final userProvider = Provider.of<UserProider>(context, listen: false);
+    List<Sales> sales = [];
+    int totalEarning = 0;
+    try {
+      http.Response response = await http.get(
+        Uri.parse("$uri/admin/analytics"),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+          "auth-token": userProvider.user.token,
+        },
+      );
+      httpErrorHandling(
+          response: response,
+          onSuccess: () {
+            var res = jsonDecode(response.body);
+
+            totalEarning = res['totalEarnings'];
+            sales = [
+              Sales("Mobile", res['mobileEarnigs']),
+              Sales("Fresh", res['freshEarnigs']),
+              Sales("Fashion", res['fashionEarnigs']),
+              Sales("Electronics", res['electronicsEarnigs']),
+              Sales("Home", res['homeEarnigs']),
+              Sales("Deals", res['dealsEarnigs']),
+              Sales("Beauty", res['beautyEarnigs']),
+              Sales("Appliances", res['appliancesEarnigs']),
+              Sales("Book", res['booksEarnigs']),
+              Sales("Everyday", res['everydayEarnigs']),
+            ];
+          },
+          context: context);
+    } catch (e) {
+      showSnackBar(context, e.toString());
+    }
+    return {
+      'sales': sales,
+      'totalErnings': totalEarning,
+    };
   }
 }

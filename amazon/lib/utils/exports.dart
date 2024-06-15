@@ -55,5 +55,9 @@ export 'package:amazon/screens/2_User/cart/single_product_cart.dart';
 export 'package:amazon/screens/2_User/address/screens/address_screen.dart';
 export 'package:pay/pay.dart';
 export 'package:amazon/models/order.dart';
+export 'package:amazon/models/sales.dart';
+export 'package:amazon/screens/1_Admin/all_inbox/admin_order_details.dart';
+export 'package:amazon/screens/1_Admin/analytics/analytics_screen.dart';
+export 'package:syncfusion_flutter_charts/charts.dart';
 // export
 // export

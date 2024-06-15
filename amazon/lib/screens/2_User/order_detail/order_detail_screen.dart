@@ -18,19 +18,26 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
     currentStep = widget.order.status;
   }
 
-  //changing order status ****************only for admin**********************
+  //changing order status
+  //****************only for admin**********************
   final AdminServices adminServices = AdminServices();
   void changeOrderStatus(int status) {
-    adminServices.changeStatus(
-        context: context,
-        status: status + 1,
-        order: widget.order,
-        onSuccess: () {
-          setState(() {
-            //when done button clicked current state will+1
-            currentStep += 1;
+    if (status < getMaxSteps() - 1) {
+      adminServices.changeStatus(
+          context: context,
+          status: status + 1,
+          order: widget.order,
+          onSuccess: () {
+            setState(() {
+              //when done button clicked current state will+1
+              currentStep += 1;
+            });
           });
-        });
+    }
+  }
+
+  int getMaxSteps() {
+    return 4; // Total number of steps in the Stepper
   }
 
   @override
@@ -157,18 +164,18 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                 child: Stepper(
                   currentStep: currentStep,
                   controlsBuilder: (context, details) {
-                    return
-                        //cheking a type as admin
-                        user.type == "admin"
-                            ? Padding(
-                                padding: const EdgeInsets.only(top: 10.0),
-                                child: CustomButton(
-                                  text: "Done",
-                                  onTap: () =>
-                                      changeOrderStatus(details.currentStep),
-                                ),
-                              )
-                            : SizedBox();
+                    //cheking a type as admin
+                    if (user.type == "admin" &&
+                        currentStep != getMaxSteps() - 1) {
+                      return Padding(
+                        padding: const EdgeInsets.only(top: 10.0),
+                        child: CustomButton(
+                          text: "Done",
+                          onTap: () => changeOrderStatus(details.currentStep),
+                        ),
+                      );
+                    }
+                    return SizedBox();
                   },
                   steps: [
                     Step(
@@ -211,11 +218,11 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                       title: Text("Delivered"),
                       content: user.type == "admin"
                           ? Text(
-                              "Is Order Delivered and Payment Confirmed Successfully?")
+                              "Is Order Delivered and Payment Confirmed Successfully")
                           : Text(
                               "Your order has been delivered, and signed by you.",
                             ),
-                      isActive: currentStep == 3,
+                      isActive: currentStep >= 3,
                       state: currentStep >= 3
                           ? StepState.complete
                           : StepState.indexed,

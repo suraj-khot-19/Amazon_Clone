@@ -45,6 +45,7 @@ dependencies:
   flutter_rating_bar: ^4.0.1
   pay: ^1.0.8
   intl: ^0.18.1
+  syncfusion_flutter_charts: ^26.1.35
 
 dev_dependencies:
   flutter_test:

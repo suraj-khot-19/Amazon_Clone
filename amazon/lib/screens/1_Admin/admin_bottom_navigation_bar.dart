@@ -1,4 +1,3 @@
-import 'package:amazon/screens/1_Admin/all_inbox/admin_order_details.dart';
 import 'package:amazon/utils/exports.dart';
 
 class AdminBottomBar extends StatefulWidget {
@@ -12,9 +11,7 @@ class AdminBottomBarState extends State<AdminBottomBar> {
   int isSelected = 0;
   final List _items = const <Widget>[
     AdminHome(),
-    Center(
-      child: Text("1"),
-    ),
+    AnalyticsScreen(),
     AdminOrderDetails(),
   ];
 
