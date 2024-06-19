@@ -1,4 +1,3 @@
-import 'package:amazon/screens/2_User/profile/screens/privous_orders.dart';
 import 'package:amazon/screens/2_User/profile/screens/your_orders.dart';
 import 'package:amazon/utils/exports.dart';
 
@@ -84,12 +83,7 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
         settings: routeSettings,
         builder: (_) => CartScreen(),
       );
-    //Order List
-    case PrivousOrders.routeName:
-      return MaterialPageRoute(
-        settings: routeSettings,
-        builder: (_) => PrivousOrders(),
-      );
+
     default:
       return MaterialPageRoute(
         builder: (_) => const Scaffold(

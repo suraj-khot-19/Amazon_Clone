@@ -1,4 +1,3 @@
-import 'package:amazon/screens/2_User/profile/screens/privous_orders.dart';
 import 'package:amazon/screens/2_User/profile/screens/your_orders.dart';
 import 'package:amazon/utils/exports.dart';
 
@@ -103,12 +102,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   onTap: () =>
                       Navigator.pushNamed(context, YourOrders.routeName)),
               ButtonWithBorder(
-                text: "Your Privious Orders",
+                text: "Your Cart",
                 onTap: () {
-                  Navigator.pushNamed(
-                    context,
-                    PrivousOrders.routeName,
-                  );
+                  Navigator.pushNamed(context, CartScreen.routeName);
                 },
               )
             ],

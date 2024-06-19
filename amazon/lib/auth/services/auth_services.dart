@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 
 class AuthServices {
   //sign up user
-  void signUpUser({
+  Future<void> signUpUser({
     required BuildContext context,
     required String email,
     required String password,
@@ -41,7 +41,7 @@ class AuthServices {
   }
 
 //sign in user
-  void signInUser({
+  Future<void> signInUser({
     required BuildContext context,
     required String email,
     required String password,

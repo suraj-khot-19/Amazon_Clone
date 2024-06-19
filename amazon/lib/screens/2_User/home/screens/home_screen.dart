@@ -73,101 +73,112 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
                   itemBuilder: (context, index) {
                     return Column(
                       children: [
-                        Row(
-                          children: [
-                            Container(
-                              padding: EdgeInsets.only(left: 10),
-                              child: Image.network(
-                                product![index].images[0],
-                                height: 150,
-                                width: 160,
-                                fit: BoxFit.contain,
-                              ),
-                            ),
-                            CustomSpacer(
-                              width: 5,
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 8.0,
-                                    top: 12.0,
-                                    bottom: 12.0,
-                                    right: 8.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Container(
-                                      child: Text(
-                                        product![index].name,
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-                                        maxLines: 2,
-                                      ),
-                                    ),
-                                    Ratings(rating: rating),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          "\₹ ${product![index].price}",
-                                          maxLines: 1,
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 18),
-                                        ),
-                                        Icon(
-                                          Icons.check,
-                                          color: AppStyles.secondaryColor,
-                                          size: 20,
-                                        ),
-                                        Text(
-                                          "prime",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 18,
-                                              color: AppStyles.secondaryColor),
-                                        ),
-                                      ],
-                                    ),
-                                    Container(
-                                      color: Colors.red,
-                                      width: 135,
-                                      height: 20,
-                                      child: Center(
-                                        child: Text(
-                                          "Limited Time Deal",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.white),
-                                        ),
-                                      ),
-                                    ),
-                                    product![index].quantity == 0
-                                        ? Text(
-                                            "Out Of Stock",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.red),
-                                          )
-                                        : Text(
-                                            "In Stock",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                color: AppStyles
-                                                    .selectedNavBarColor),
-                                          ),
-                                    Text("Get it on Friday Aug 19"),
-                                  ],
+                        GestureDetector(
+                          onTap: () => Navigator.pushNamed(
+                              context, ProductDescription.routeName,
+                              arguments: product![index]),
+                          child: Row(
+                            children: [
+                              Container(
+                                padding: EdgeInsets.only(left: 10),
+                                child: Image.network(
+                                  product![index].images[0],
+                                  height: 150,
+                                  width: 160,
+                                  fit: BoxFit.contain,
                                 ),
                               ),
-                            ),
-                          ],
+                              CustomSpacer(
+                                width: 5,
+                              ),
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 8.0,
+                                      top: 12.0,
+                                      bottom: 12.0,
+                                      right: 8.0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        child: Text(
+                                          product![index].name,
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            overflow: TextOverflow.ellipsis,
+                                          ),
+                                          maxLines: 2,
+                                        ),
+                                      ),
+                                      Ratings(
+                                        rating:
+                                            product![index].rating![0].rating,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            "\₹ ${product![index].price}",
+                                            maxLines: 1,
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 18),
+                                          ),
+                                          Icon(
+                                            Icons.check,
+                                            color: AppStyles.secondaryColor,
+                                            size: 20,
+                                          ),
+                                          Text(
+                                            "prime",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 18,
+                                                color:
+                                                    AppStyles.secondaryColor),
+                                          ),
+                                        ],
+                                      ),
+                                      Container(
+                                        color: Colors.red,
+                                        width: 135,
+                                        height: 20,
+                                        child: Center(
+                                          child: Text(
+                                            "Limited Time Deal",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.white),
+                                          ),
+                                        ),
+                                      ),
+                                      product![index].quantity == 0
+                                          ? Text(
+                                              "Out Of Stock",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.red),
+                                            )
+                                          : Text(
+                                              "In Stock",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  color: AppStyles
+                                                      .selectedNavBarColor),
+                                            ),
+                                      Text(
+                                          "save upto ₹${product![index].price * 0.10}"),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                         CustomSpacer(
                           height: 30,

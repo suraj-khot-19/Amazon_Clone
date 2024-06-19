@@ -43,6 +43,7 @@ class _AppBarSearchState extends State<AppBarSearch> {
                       color: Colors.black),
                   //search icon
                   suffixIcon: Container(
+                    margin: EdgeInsets.all(1),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
                       color: Colors.amber[300],

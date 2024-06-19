@@ -22,22 +22,37 @@ class _AuthScreenState extends State<AuthScreen> {
   final _signUpFormKey = GlobalKey<FormState>();
   final _signInFormKey = GlobalKey<FormState>();
   Auth _auth = Auth.singUp;
+  bool _obscureText = true;
+  bool _isLoading = false;
 
   //sign up logic
-  void userSignUp() {
-    _authServices.signUpUser(
+  Future<void> userSignUp() async {
+    setState(() {
+      _isLoading = true;
+    });
+    await _authServices.signUpUser(
         context: context,
         email: _emailController.text,
         password: _passwordController.text,
         name: _nameController.text);
+    setState(() {
+      _isLoading = false;
+    });
   }
 
 //sign in logic
-  void userSignIn() {
-    _authServices.signInUser(
-        context: context,
-        email: _emailController.text,
-        password: _passwordController.text);
+  Future<void> userSignIn() async {
+    setState(() {
+      _isLoading = true;
+    });
+    await _authServices.signInUser(
+      context: context,
+      email: _emailController.text,
+      password: _passwordController.text,
+    );
+    setState(() {
+      _isLoading = false;
+    });
   }
 
   @override
@@ -48,6 +63,13 @@ class _AuthScreenState extends State<AuthScreen> {
     _passwordController.dispose();
   }
 
+//clearing controllers
+  void clearController() {
+    _emailController.clear();
+    _nameController.clear();
+    _passwordController.clear();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,93 +77,123 @@ class _AuthScreenState extends State<AuthScreen> {
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                "Welcome",
-                style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
-              ),
-              ListTile(
-                tileColor: _auth == Auth.singUp
-                    ? AppStyles.backgroundColor
-                    : AppStyles.greyBackgroundColor,
-                title: const Text(
-                  "Create Account",
-                  style: TextStyle(fontWeight: FontWeight.w600),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Center(
+                  child: Image.asset(
+                    "assets/images/amazon.png",
+                    color: Colors.black,
+                    width: 200,
+                    height: 80,
+                    fit: BoxFit.contain,
+                  ),
                 ),
-                leading: Radio(
-                    activeColor: AppStyles.secondaryColor,
-                    value: Auth.singUp,
-                    groupValue: _auth,
-                    onChanged: (Auth? val) {
-                      setState(() {
-                        _auth = val!;
-                      });
-                    }),
-              ),
-              if (_auth == Auth.singUp)
-                Form(
-                    key: _signUpFormKey,
-                    child: Container(
-                      padding: const EdgeInsets.all(8),
-                      color: AppStyles.backgroundColor,
-                      child: Column(
-                        children: [
-                          CustomTextFeild(
-                            text: "name",
-                            controller: _nameController,
-                          ),
-                          CustomSpacer(
-                            height: 10,
-                          ),
-                          CustomTextFeild(
-                            text: "email",
-                            controller: _emailController,
-                          ),
-                          CustomSpacer(
-                            height: 10,
-                          ),
-                          CustomTextFeild(
-                            text: "password",
-                            controller: _passwordController,
-                          ),
-                          CustomSpacer(
-                            height: 10,
-                          ),
-                          CustomButton(
-                              text: "Create account",
-                              onTap: () {
-                                if (_signUpFormKey.currentState!.validate()) {
-                                  userSignUp();
-                                }
-                              }),
-                          CustomSpacer(
-                            height: 2,
-                          ),
-                        ],
-                      ),
-                    )),
-              ListTile(
-                tileColor: _auth == Auth.signIn
-                    ? AppStyles.backgroundColor
-                    : AppStyles.greyBackgroundColor,
-                title: const Text(
-                  "Login",
-                  style: TextStyle(fontWeight: FontWeight.w600),
+                CustomSpacer(
+                  height: 50,
                 ),
-                leading: Radio(
-                    activeColor: AppStyles.secondaryColor,
-                    value: Auth.signIn,
-                    groupValue: _auth,
-                    onChanged: (Auth? val) {
-                      setState(() {
-                        _auth = val!;
-                      });
-                    }),
-              ),
-              if (_auth == Auth.signIn)
-                Form(
+                const Text(
+                  "Welcome!",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                ListTile(
+                  tileColor: _auth == Auth.singUp
+                      ? AppStyles.backgroundColor
+                      : AppStyles.greyBackgroundColor,
+                  title: const Text(
+                    "Create Account",
+                    style: TextStyle(fontWeight: FontWeight.w600),
+                  ),
+                  leading: Radio(
+                      activeColor: AppStyles.secondaryColor,
+                      value: Auth.singUp,
+                      groupValue: _auth,
+                      onChanged: (Auth? val) {
+                        setState(() {
+                          _auth = val!;
+                          clearController();
+                        });
+                      }),
+                ),
+                if (_auth == Auth.singUp)
+                  Form(
+                      key: _signUpFormKey,
+                      child: Container(
+                        padding: const EdgeInsets.all(8),
+                        color: AppStyles.backgroundColor,
+                        child: Column(
+                          children: [
+                            CustomTextFeild(
+                              text: "name",
+                              controller: _nameController,
+                            ),
+                            CustomSpacer(
+                              height: 10,
+                            ),
+                            CustomTextFeild(
+                              text: "email",
+                              controller: _emailController,
+                            ),
+                            CustomSpacer(
+                              height: 10,
+                            ),
+                            CustomTextFeild(
+                              text: "password",
+                              controller: _passwordController,
+                              widget: GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    _obscureText = !_obscureText;
+                                  });
+                                },
+                                child: Icon(_obscureText
+                                    ? Icons.visibility_off
+                                    : Icons.visibility),
+                              ),
+                              obsecure: _obscureText,
+                            ),
+                            CustomSpacer(
+                              height: 10,
+                            ),
+                            CustomButton(
+                                isLoading: _isLoading,
+                                text: "Create account",
+                                onTap: () {
+                                  if (_signUpFormKey.currentState!.validate()) {
+                                    userSignUp();
+                                  }
+                                }),
+                            CustomSpacer(
+                              height: 2,
+                            ),
+                          ],
+                        ),
+                      )),
+                ListTile(
+                  tileColor: _auth == Auth.signIn
+                      ? AppStyles.backgroundColor
+                      : AppStyles.greyBackgroundColor,
+                  title: const Text(
+                    "Login",
+                    style: TextStyle(fontWeight: FontWeight.w600),
+                  ),
+                  leading: Radio(
+                      activeColor: AppStyles.secondaryColor,
+                      value: Auth.signIn,
+                      groupValue: _auth,
+                      onChanged: (Auth? val) {
+                        setState(() {
+                          _auth = val!;
+                          clearController();
+                        });
+                      }),
+                ),
+                if (_auth == Auth.signIn)
+                  Form(
                     key: _signInFormKey,
                     child: Container(
                       padding: const EdgeInsets.all(8),
@@ -158,11 +210,23 @@ class _AuthScreenState extends State<AuthScreen> {
                           CustomTextFeild(
                             text: "password",
                             controller: _passwordController,
+                            widget: GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  _obscureText = !_obscureText;
+                                });
+                              },
+                              child: Icon(_obscureText
+                                  ? Icons.visibility_off
+                                  : Icons.visibility),
+                            ),
+                            obsecure: _obscureText,
                           ),
                           CustomSpacer(
                             height: 10,
                           ),
                           CustomButton(
+                              isLoading: _isLoading,
                               text: "Sign In",
                               onTap: () {
                                 if (_signInFormKey.currentState!.validate()) {
@@ -174,8 +238,19 @@ class _AuthScreenState extends State<AuthScreen> {
                           ),
                         ],
                       ),
-                    ))
-            ],
+                    ),
+                  ),
+                CustomSpacer(
+                  height: 80,
+                ),
+                Center(
+                  child: Text(
+                    "Made with 💛 by SurajKhot",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
